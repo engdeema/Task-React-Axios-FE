@@ -1,17 +1,20 @@
-import { Modal, Button, InputGroup, Form } from 'react-bootstrap';
-import React, { useState } from 'react';
+import { Modal, Button, InputGroup, Form } from "react-bootstrap";
+import React, { useState } from "react";
 
 export default function CreateRoomModal(props) {
   const [room, setRoom] = useState({
-    title: '',
-    image: '',
-    description: '',
+    title: "",
+    image: "",
+    description: "",
     messages: [],
   });
   const handleChange = (event) => {
+    setRoom({ ...room, [event.target.name]: event.target.value });
     // to do : setRoom state based in input
   };
   const handleSubmit = (event) => {
+    event.preventDefault();
+    props.createRoom(room);
     // to do : stop page from refreshing
     // call a function from app to create a room (pass room as a parameter)
 
