@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import MessageItem from "./MessageItem";
-
+import axios from "axios";
 function ChatRoom(props) {
   const roomSlug = useParams().roomSlug;
   const room = props.rooms.find((room) => room.slug === roomSlug);
@@ -12,7 +12,21 @@ function ChatRoom(props) {
   const handleChange = (event) => {
     setMsg({ ...msg, [event.target.name]: event.target.value });
   };
-  const handleSubmit = (event) => {};
+  const handleSubmit = (event) => {
+    event.preventDefaul();
+    createMsg(msg);
+  };
+
+  const createMsg = async (newMsg) => {
+    try {
+      const response = await axios.post(
+        `https://coded-task-axios-be.herokuapp.com/rooms/msg/${roomId}`
+      );
+      setMsg([...msg, response.data]);
+    } catch (error) {}
+
+    // to do : call BE to create a room
+  };
 
   return (
     <div className="main__chatcontent">

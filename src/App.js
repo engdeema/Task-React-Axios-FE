@@ -55,6 +55,7 @@ function App() {
         <Switch>
           <Route path="/room/:roomSlug">
             <ChatRoom rooms={rooms} />
+            {/* //createMsg={createMsg} */}
           </Route>
           <Route exact path="/">
             <center>
