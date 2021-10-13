@@ -48,7 +48,24 @@ function App() {
       // to do : call BE to delete a room
     }
   };
+  const updateRoom = async (updated) => {
+    try {
+      const response = await axios.put(
+        `https://coded-task-axios-be.herokuapp.com/rooms/${updated.id}`,
+        updated
+      );
 
+      let tempupdate = rooms.map((room) =>
+        room.id === updated.id ? response.data : room
+      );
+
+      setRooms(tempupdate);
+    } catch (error) {
+      window.alert(error);
+
+      // to do : call BE to delete a room
+    }
+  };
   return (
     <div className="__main">
       <div className="main__chatbody">
@@ -63,6 +80,7 @@ function App() {
                 rooms={rooms}
                 createRoom={createRoom}
                 deleteRoom={deleteRoom}
+                updateRoom={updateRoom}
               />
             </center>
           </Route>

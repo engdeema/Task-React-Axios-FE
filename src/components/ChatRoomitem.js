@@ -38,7 +38,12 @@ export default function ChatRoomitem(props) {
       <Button className="delete" onClick={openModal}>
         Update
       </Button>
-      <UpdateRoomModal isOpen={isOpen} closeModal={closeModal} room={room} />
+      <UpdateRoomModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        room={room}
+        updateRoom={props.updateRoom}
+      />
     </div>
   );
 }

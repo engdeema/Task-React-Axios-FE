@@ -14,10 +14,10 @@ function ChatRoom(props) {
   };
   const handleSubmit = (event) => {
     event.preventDefaul();
-    createMsg(msg);
+    // createMsg(msg);
   };
 
-  const createMsg = async (newMsg) => {
+  /*const createMsg = async (newMsg) => {
     try {
       const response = await axios.post(
         `https://coded-task-axios-be.herokuapp.com/rooms/msg/${roomId}`
@@ -27,7 +27,7 @@ function ChatRoom(props) {
 
     // to do : call BE to create a room
   };
-
+*/
   return (
     <div className="main__chatcontent">
       <div className="content__header">

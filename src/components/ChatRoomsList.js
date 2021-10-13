@@ -11,7 +11,12 @@ function ChatRoomsList(props) {
 
   const roomsList = props.rooms.map((room) => {
     return (
-      <ChatRoomitem room={room} key={room.id} deleteRoom={props.deleteRoom} />
+      <ChatRoomitem
+        room={room}
+        key={room.id}
+        deleteRoom={props.deleteRoom}
+        updateRoom={props.updateRoom}
+      />
     );
   });
   return (
